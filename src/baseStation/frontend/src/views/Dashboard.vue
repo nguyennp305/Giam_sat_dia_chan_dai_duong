@@ -4,6 +4,7 @@
       <div class="button" @click="clickChangeDataButton">
         <a href="#">Trigger</a>
       </div>
+      <div class="show-text">{{textShow}}</div>
     </div>
     <div class="dashboard-body" :v-if="measurements">
       <div v-for="measurement in measurements" :key="measurement">
@@ -30,6 +31,7 @@ export default {
   },
   data() {
     return {
+      textShow: 'Normal operation',
       measurements: this.$store.getters.measurementNames,
       diachan: "",
       temp: "",
@@ -110,6 +112,7 @@ export default {
           }
         )
         .then((response) => {
+          this.textShow = 'Release OBS'
           console.log("Trường X đã được cập nhật thành 1 trên Firebase.");
           setTimeout(() => {
             axios
@@ -159,6 +162,21 @@ export default {
   z-index: 100;
   display:inline-block;
   margin:20px;
+  margin-left: 35%;
+}
+.show-text {
+  position:fixed;
+  z-index: 100;
+  display:inline-block;
+  margin:20px;
+  padding: 10px;
+  margin-left: 45%;
+  background-color: white;
+  border-radius: 10px;
+  width: 200px;
+  height: 60px;
+  text-align: center;
+  font-size: 20px;
 }
 
 .button a{
