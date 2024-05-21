@@ -127,12 +127,12 @@ export default new Vuex.Store({
       measurementData.push(data.dataPoint);
     },
     updateMeasurements(state, data) {
-      state.measurements.Xaxis.data = [[new Date(), data.X], [new Date(), data.X]]
-      state.measurements.Yaxis.data = [[new Date(), data.Y], [new Date(), data.Y]]
-      state.measurements.Zaxis.data = [[new Date(), data.Z], [new Date(), data.Z]]
-      state.measurements.Pressure.data = [[new Date(), data.Pressure], [new Date(), data.Pressure]]
-      state.measurements.Temparuture.data = [[new Date(), data.Temparuture], [new Date(), data.Temparuture]]
-      state.measurements.location.data = [[new Date(), [data.Latitude, data.longtitude]]]
+      state.measurements.Xaxis.data = [[new Date(), parseFloat(data.X)], [new Date(), parseFloat(data.X)]]
+      state.measurements.Yaxis.data = [[new Date(), parseFloat(data.Y)], [new Date(), parseFloat(data.Y)]]
+      state.measurements.Zaxis.data = [[new Date(), parseFloat(data.Z)], [new Date(), parseFloat(data.Z)]]
+      state.measurements.Pressure.data = [[new Date(), parseFloat(data.Pressure)], [new Date(), parseFloat(data.Pressure)]]
+      state.measurements.Temparuture.data = [[new Date(), parseFloat(data.Temparuture)], [new Date(), parseFloat(data.Temparuture)]]
+      state.measurements.location.data = [[new Date(), [parseFloat(data.Latitude), parseFloat(data.longtitude)]]]
     }
   },
   actions: {
