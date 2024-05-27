@@ -28,13 +28,6 @@ export default new Vuex.Store({
         icon: 'mdi-current-ac',
         trend: true
       },
-      location:{
-        name: 'Location',
-        data: [[new Date(), [21.03833344328963, 105.78265903136332]]],
-        unit: '',
-        icon: 'mdi-crosshairs-gps',
-        trend: false,
-      },
       Pressure:{
         name: 'Pressure',
         data: [[new Date(), 159.23], [new Date(), 159.23]],
@@ -132,7 +125,6 @@ export default new Vuex.Store({
       state.measurements.Zaxis.data = [[new Date(), parseFloat(data.Z)], [new Date(), parseFloat(data.Z)]]
       state.measurements.Pressure.data = [[new Date(), parseFloat(data.Pressure)], [new Date(), parseFloat(data.Pressure)]]
       state.measurements.Temparuture.data = [[new Date(), parseFloat(data.Temparuture)], [new Date(), parseFloat(data.Temparuture)]]
-      state.measurements.location.data = [[new Date(), [parseFloat(data.Latitude), parseFloat(data.longtitude)]]]
     }
   },
   actions: {

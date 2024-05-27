@@ -8,19 +8,22 @@
     </div>
     <div class="dashboard-body" :v-if="measurements">
       <div v-for="measurement in measurements" :key="measurement">
-        <data-map
+        <!-- <data-map
           :name="measurement"
           v-if="measurement == 'location'"
         ></data-map>
-        <data-card :name="measurement" v-else></data-card>
+        <data-card :name="measurement" v-else></data-card> -->
+        <data-card :name="measurement"></data-card>
       </div>
     </div>
+    <DataMap2 :data="gps" />
   </div>
 </template>
 
 <script>
 import DataCard from "../components/dataCard.vue";
 import DataMap from "../components/dataMap.vue";
+import DataMap2 from "../components/dataMap2.vue";
 import axios from "axios";
 
 export default {
@@ -28,6 +31,7 @@ export default {
   components: {
     DataCard,
     DataMap,
+    DataMap2
   },
   data() {
     return {
@@ -159,14 +163,14 @@ export default {
 }
 .button{
   position:fixed;
-  z-index: 100;
+  // z-index: 100;
   display:inline-block;
   margin:20px;
   margin-left: 35%;
 }
 .show-text {
   position:fixed;
-  z-index: 100;
+  // z-index: 100;
   display:inline-block;
   margin:20px;
   padding: 10px;

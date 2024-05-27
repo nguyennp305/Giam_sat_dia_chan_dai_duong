@@ -15,6 +15,11 @@ import * as VueGoogleMaps from 'vue2-google-maps'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
+import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
+import 'leaflet/dist/leaflet.css';
+
+import mapMakerIcon from './assets/map-maker.svg';
+
 Vue.use(VueGoogleCharts)
 Vue.use(VueRouter)
 
@@ -24,6 +29,18 @@ Vue.use(VueGoogleMaps, {
     key: process.env.VUE_APP_GOOGLE_MAPS_KEY,
     libraries: 'places',
   },
+});
+Vue.component('l-map', LMap);
+Vue.component('l-tile-layer', LTileLayer);
+Vue.component('l-marker', LMarker);
+
+// Fix Leaflet's default icon issue with Vue
+delete L.Icon.Default.prototype._getIconUrl;
+
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: mapMakerIcon,
+  iconUrl: mapMakerIcon,
+  shadowUrl: mapMakerIcon
 });
 
 
