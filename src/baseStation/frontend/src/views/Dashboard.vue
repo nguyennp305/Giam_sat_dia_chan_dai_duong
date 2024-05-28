@@ -41,6 +41,7 @@ export default {
       temp: "",
       pressure: "",
       gps: "",
+      current: "",
     };
   },
   mounted() {
@@ -89,17 +90,30 @@ export default {
         .catch((error) => {
           console.error("Error fetching diachan:", error);
         });
+        axios
+        .get(
+          "https://smartbouy-14717-default-rtdb.asia-southeast1.firebasedatabase.app/current.json"
+        )
+        .then((response) => {
+          this.current = response.data;
+          // this.$store.dispatch('updateDataMeasurements', response.data)
+        })
+        .catch((error) => {
+          console.error("Error fetching diachan:", error);
+        });
       console.log("temp_tung::: ", {
         ...this.diachan,
         ...this.temp,
         ...this.pressure,
         ...this.gps,
+        ...this.current
       });
       this.$store.dispatch("updateDataMeasurements", {
         ...this.diachan,
         ...this.temp,
         ...this.pressure,
         ...this.gps,
+        ...this.current,
       });
     };
 

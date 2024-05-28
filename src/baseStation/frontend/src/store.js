@@ -42,6 +42,13 @@ export default new Vuex.Store({
         icon: 'mdi-current-ac',
         trend: true
       },
+      Current:{
+        name: 'Current',
+        data: [[new Date(), 2], [new Date(), 2]],
+        unit: 'A',
+        icon: 'mdi-current-ac',
+        trend: true
+      },
     }
   },
   getters: {
@@ -125,6 +132,8 @@ export default new Vuex.Store({
       state.measurements.Zaxis.data = [[new Date(), parseFloat(data.Z)], [new Date(), parseFloat(data.Z)]]
       state.measurements.Pressure.data = [[new Date(), parseFloat(data.Pressure)], [new Date(), parseFloat(data.Pressure)]]
       state.measurements.Temparuture.data = [[new Date(), parseFloat(data.Temparuture)], [new Date(), parseFloat(data.Temparuture)]]
+      state.measurements.Current.data = [[new Date(), parseFloat(data.Current)], [new Date(), parseFloat(data.Current)]]
+
     }
   },
   actions: {
